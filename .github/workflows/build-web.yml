@@ -12,5 +12,7 @@ jobs:
       - name: Build the hello-world Docker image
         run: |
           echo $PAT | docker login ghcr.io -u mfalicoff --password-stdin
+          cd client
+          docker build . --tag ghcr.io/mfalicoff/infra-web:latest
         env:
           PAT: ${{ secrets.PAT }}
