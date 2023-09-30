@@ -5,7 +5,7 @@ export default function Home() {
   const click = async () => {
     console.log("clicked")
     console.log(process.env.NEXT_PUBLIC_ROUTE)
-    let res = await fetch(process.env.NEXT_PUBLIC_ROUTE)
+    let res = await fetch(process.env.NEXT_PUBLIC_ROUTE!.toString())
     console.log(await res.json())
   }
 
