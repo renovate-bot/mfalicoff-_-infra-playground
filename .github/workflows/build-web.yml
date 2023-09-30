@@ -1,0 +1,16 @@
+name: publish
+
+on: [push]
+
+jobs:
+  publish-hello-world-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build the hello-world Docker image
+        run: |
+          echo $PAT | docker login ghcr.io -u mfalicoff --password-stdin
+        env:
+          PAT: ${{ secrets.PAT }}
