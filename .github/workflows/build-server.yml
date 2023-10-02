@@ -3,7 +3,7 @@ name: publish
 on: [push]
 
 jobs:
-  build-and-publish-web-image:
+  build-and-publish-server-image:
     runs-on: ubuntu-latest
 
     steps:
@@ -12,8 +12,8 @@ jobs:
       - name: Build and publish web Docker image
         run: |
           echo $PAT | docker login ghcr.io -u mfalicoff --password-stdin
-          cd client
-          docker build . --tag ghcr.io/mfalicoff/infra-web:latest
-          docker push ghcr.io/mfalicoff/infra-web:latest
+          cd server
+          docker build . --tag ghcr.io/mfalicoff/infra-server:latest
+          docker push ghcr.io/mfalicoff/infra-server:latest
         env:
           PAT: ${{ secrets.PAT }}
